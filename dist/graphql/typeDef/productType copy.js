@@ -1,16 +1,16 @@
-export default `#graphql
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.default = `#graphql
      type Product {
           _id: ID
           product_name: String
           type_cash: String
-          category_id: Category
           image: String
           price: Float
      }
-     input ProductInput { 
+     input ProductInput {
           product_name: String
           type_cash: String
-          category_id: ID
           image: String
           price: Float
      }
@@ -27,4 +27,4 @@ export default `#graphql
           updateProduct(id:ID input: ProductInput): Response
           deleteProduct(id:ID): Response
      }
-`
+`;

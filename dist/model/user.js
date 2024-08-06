@@ -30,18 +30,16 @@ exports.User = void 0;
 const mongoose_paginate_v2_1 = __importDefault(require("mongoose-paginate-v2"));
 const mongoose_1 = __importStar(require("mongoose"));
 const userSchema = new mongoose_1.Schema({
-    username: String,
-    tell: String,
-    gender: { type: String, enum: ['Male', 'Female'] },
-    type: { type: String, enum: ['Maintenance', 'Normal', 'Owner'], default: 'Normal' },
     email: String,
+    remark: String,
+    username: String,
     password: String,
     imageSrc: String,
-    remark: String,
-    isAllow: { type: Boolean, default: true },
-    lastLogin: { type: Date, default: null },
     token: { type: String, default: null },
-    createdBy: { type: mongoose_1.default.Types.ObjectId, ref: 'user' }
+    lastLogin: { type: Date, default: null },
+    isAllow: { type: Boolean, default: true },
+    createdBy: { type: mongoose_1.default.Types.ObjectId, ref: 'user' },
+    type: { type: String, enum: ['Maintenance', 'Normal', 'Owner'], default: 'Normal' },
 }, { timestamps: true });
 userSchema.plugin(mongoose_paginate_v2_1.default);
 const User = (0, mongoose_1.model)('user', userSchema);
