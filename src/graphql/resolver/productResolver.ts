@@ -54,7 +54,7 @@ export default {
                { req }: { req: express.Request }
           ) => {
                try {
-                    const data = await Product.find();
+                    const data = await Product.find().populate("category_id");
                     return data
                } catch (error) {
                     return error

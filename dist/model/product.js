@@ -32,8 +32,9 @@ const mongoose_1 = __importStar(require("mongoose"));
 const productSchema = new mongoose_1.Schema({
     image: String,
     price: Number,
-    type_cash: String,
+    description: String,
     product_name: String,
+    type_cash: { type: String, enum: ["CASH,USD"] },
     category_id: { type: mongoose_1.default.Types.ObjectId, ref: "category" },
 }, { timestamps: true });
 productSchema.plugin(mongoose_paginate_v2_1.default);

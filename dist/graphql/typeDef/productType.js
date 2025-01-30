@@ -6,11 +6,13 @@ exports.default = `#graphql
           product_name: String
           type_cash: String
           category_id: Category
+          description: String
           image: String
           price: Float
      }
      input ProductInput { 
           product_name: String
+          description: String
           type_cash: String
           category_id: ID
           image: String

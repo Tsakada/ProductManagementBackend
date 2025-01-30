@@ -4,6 +4,10 @@ export default `#graphql
           category_name: String
           remark: String
      }
+     type SelectCategory {
+          _id: ID
+          category_name: String 
+     }
      input CategoryInput {
           category_name: String
           remark: String
@@ -15,6 +19,7 @@ export default `#graphql
      type Query {
           getUserPagination(page: Int, limit: Int, pagination: Boolean, keyword: String, isAllow: Boolean): UserPagiantion
           getCategory:[Category]  
+          selectCategory:[SelectCategory]  
      }
      type Mutation {
           createCategory(input: CategoryInput): Response

@@ -43,7 +43,7 @@ exports.default = {
         },
         getProduct: async (_root, { page, limit, pagination, keyword, isAllow }, { req }) => {
             try {
-                const data = await product_1.Product.find();
+                const data = await product_1.Product.find().populate("category_id");
                 return data;
             }
             catch (error) {

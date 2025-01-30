@@ -13,6 +13,15 @@ exports.default = {
                 return error;
             }
         },
+        selectCategory: async (_root, {}, { req }) => {
+            try {
+                const data = await category_1.Category.find();
+                return data;
+            }
+            catch (error) {
+                return error;
+            }
+        },
     },
     Mutation: {
         createCategory: async (_root, { input }, { req }) => {
@@ -35,7 +44,9 @@ exports.default = {
         },
         updateCategory: async (_root, { id, input }, { req }) => {
             try {
+                console.log({ id, input });
                 const newCategory = await category_1.Category.findByIdAndUpdate(id, input);
+                console.log("category", newCategory);
                 if (newCategory)
                     return {
                         status: true,
@@ -48,7 +59,10 @@ exports.default = {
                     };
             }
             catch (error) {
-                return (0, resp_1.respE)(error.message);
+                return {
+                    status: false,
+                    message: "error",
+                };
             }
         },
         deleteCategory: async (_root, { id, input }, { req }) => {

@@ -13,6 +13,14 @@ export default {
                     return error
                }
           },
+          selectCategory: async (_root: undefined, { }, { req }: { req: express.Request }) => {
+               try {
+                    const data = await Category.find();
+                    return data
+               } catch (error) {
+                    return error
+               }
+          },
      },
      Mutation: {
           createCategory: async (_root: undefined, { input }: { input: iUser }, { req }: { req: express.Request }) => {
@@ -32,17 +40,24 @@ export default {
           },
           updateCategory: async (_root: undefined, { id, input }: { id: string, input: iUser }, { req }: { req: express.Request }) => {
                try {
+                    console.log({ id, input })
                     const newCategory = await Category.findByIdAndUpdate(id, input)
+
+                    console.log("category", newCategory)
                     if (newCategory) return {
                          status: true,
                          message: "success",
                     }
+
                     else return {
                          status: false,
                          message: "error",
                     }
                } catch (error) {
-                    return respE(error.message)
+                    return {
+                         status: false,
+                         message: "error",
+                    }
                }
           },
           deleteCategory: async (_root: undefined, { id, input }: { id: string, input: iUser }, { req }: { req: express.Request }) => {
